@@ -1,0 +1,20 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<img src="img/gif.gif" style="width:100%; padding-top: 30%;">
+<meta http-equiv="refresh" content="5;url=home.html" />
+<div style="text-align: center;font-size: 70px; color:#2B2A29"><font face="Ubuntu"><b>Miau</b></font></div>
+<script>
+var Permission = window.plugins.Permission
+ 
+var permission = 'android.permission.RECORD_AUDIO','android.permissions.ACCESS_COARSE_LOCATION', 'android.permission.ACCESS_FINE_LOCATION';
+ 
+Permission.has(permission, function(results) {
+    if (!results[permission]) {
+        Permission.request(permission, function(results) {
+            if (result[permission]) {
+                // permission is granted
+            }
+        }, alert)
+    }
+}, alert)
+
+</script>

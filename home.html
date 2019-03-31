@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bo	otstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>	
+		    <style>
+			  #map {
+				height: 100%;
+			  }
+			  html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				
+			  }
+			</style>
+	
+	</head>
+	<body onload="getLocation();">
+		<div class="wrapper">
+			<nav id="sidebar">
+				<div class="sidebar-header">
+						
+					<h3 style="text-align: center;"><img src="img/img.png" style="width:45%;"></h3>
+					<div style="text-align: center;font-size: 60px; color:white; "><font face="Ubuntu"><b>Miau</b></font></div>
+				</div>
+				<hr/ style="border-color:white; width: 80%;">
+				<ul class="list-unstyled components">
+					<li>
+						<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Transportes</a>
+						<ul class="collapse list-unstyled" id="pageSubmenu">
+							<li>
+								<a href="#">Ônibus</a>
+							</li>
+							<li>
+								<a href="#">Metrô</a>
+							</li>
+							<li>
+								<a href="#">Trem</a>
+							</li>
+							<li>
+								<a href="#">BRT</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<!-- Page Content  -->
+			<div id="content">
+				<nav>
+					<div class="container-fluid ajuste2">
+						<a href="#" id="sidebarCollapse">
+						 <i class="container" onclick="myFunction(this)">
+							  <div class="bar1"></div>
+							  <div class="bar2"></div>
+							  <div class="bar3"></div>
+						</i>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="nav navbar-nav ml-auto">
+								<li class="nav-item active">
+									<a class="nav-link" href="#">Page</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Page</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Page</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">Page</a>
+								</li>
+							</ul>
+						</div>
+						
+
+						<section class="container">
+						
+										<div class="search-wrapper">
+												<div id="input-holder" class="input-holder">
+														<input type="text" class="search-input" placeholder="Pesquisar" />
+														<button id="Lupa" class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+												</div>
+												<span id="xLupa" class="close" onclick="searchToggle(this, event);"></span>
+												<div class="result-container">
+				
+												</div>
+										</div>
+							
+					</section>
+					</div>
+				</nav>
+				<div id="map"></div>	
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+		
+		<!--LUPA-->
+		<script type="text/javascript">
+			$(document).ready(function () {
+					$('#sidebarCollapse').on('click', function () {
+							$('#sidebar').toggleClass('active');
+							if (document.getElementById("input-holder").style.display == "none"){
+									document.getElementById("input-holder").style.display = "";
+							}else{
+									document.getElementById("input-holder").style.display = "none";
+							}
+							if (document.getElementById("xLupa").style.display == "none"){
+									document.getElementById("xLupa").style.display = "";
+							}else{
+									document.getElementById("xLupa").style.display = "none";
+							}
+							if (document.getElementById("Lupa").style.display == "none"){
+									document.getElementById("Lupa").style.display = "";
+							}else{
+							document.getElementById("Lupa").style.display = "none";
+							}
+					});
+			});
+			function myFunction(x) {
+		x.classList.toggle("change");
+	}
+						function searchToggle(obj, evt){
+					var container = $(obj).closest('.search-wrapper');
+
+					if(!container.hasClass('active')){
+								container.addClass('active');
+					}
+					else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+								container.removeClass('active');
+								// clear input
+								container.find('.search-input').val('');
+								// clear and hide result container when we press close
+								container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+					}
+			}
+
+			
+	</script>
+		<!--PIN-->
+		<script type="text/javascript">
+		var icons;
+		var lat;
+		var longt;
+        function showPosition(position) {
+		lat=position.coords.latitude;
+		longt=position.coords.longitude;
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: new google.maps.LatLng(lat, longt),
+		  disableDefaultUI: true,
+		  gestureHandling: "greedy"
+        });
+
+
+        var iconBase = '\img\\';
+         icons = {
+          parking: {
+            icon: iconBase + 'verde.png'
+          },
+          library: {
+            icon: iconBase + 'vermelho.png'
+          },
+          info: {
+            icon: iconBase + 'amarelo.png'
+          },
+		  user: {
+            icon: iconBase + 'pin.png'
+          }
+        };
+
+        var features = [
+		   {
+            position: new google.maps.LatLng(lat, longt),
+            type: 'user'
+          }]
+        // Create markers.
+        features.forEach(function(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+        });
+        $.ajax({
+	       data: "",
+                dataType: 'json',
+                url: 'http://datario.cloudapp.net:8080/api/OCTCBUSGETALLPOSITIONS?key=e872eb46-d22b-481d-9e65-aadc1344533a',
+                type: 'GET',
+                success: function (data) {
+                var corpo = "";
+                for (var i = 0;  i<= 2;  i++) {
+           var features = [
+		   {
+            position: new google.maps.LatLng(data.ResponseData.DATA[i][4], data.ResponseData.DATA[i][5]),
+            type: 'user'
+          }]
+           features.forEach(function(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+        });
+        	}
+        }
+        });
+      }
+	  
+
+	  function getLocation()
+        {
+        if (navigator.geolocation)
+        {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+        }
+        else{x.innerHTML = "Seu browser não suporta Geolocalização."; }
+        }
+		function showError(error)
+{
+switch (error.code)
+{
+case error.PERMISSION_DENIED:
+        x.innerHTML = "Usuário rejeitou a solicitação de Geolocalização."
+        break;
+        case error.POSITION_UNAVAILABLE:
+        x.innerHTML = "Localização indisponível."
+        break;
+        case error.TIMEOUT:
+        x.innerHTML = "A requisição expirou."
+        break;
+        case error.UNKNOWN_ERROR:
+        x.innerHTML = "Algum erro desconhecido aconteceu."
+        break;
+}
+}
+ 
+function error() {
+  console.warn('Camera or Accounts permission is not turned on');
+}
+ 
+function success( status ) {
+  if( !status.hasPermission ) {
+  
+    permissions.requestPermissions(
+      list,
+      function(status) {
+        if( !status.hasPermission ) error();
+      },
+      error);
+  }
+}
+
+
+	</script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNiXGFq1hj1WdJ5t8mruEsuOEnzR1xt2w&callback=getLocation">
+		</script>
+	</body>	
+</html>
